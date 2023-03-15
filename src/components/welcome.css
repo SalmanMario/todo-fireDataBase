@@ -1,0 +1,28 @@
+body {
+  background-color: #01579b;
+}
+
+.login-register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.login-register-container input {
+  width: 300px;
+  height: 35px;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.welcome-container h1 {
+  text-align: center;
+  color: #e1f5fe;
+}
+
+label {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #e1f5fe;
+}

@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { signInWithEmailAndPassword, onAuthStateChanged, createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../config.js";
 import { useNavigate } from "react-router-dom";
+import "../components/welcome.css";
+import { Button, ThemeProvider, createTheme } from "@mui/material";
+import { Container } from "@mui/material";
 
 export function Welcome() {
   const [email, setEmail] = useState("");
@@ -55,48 +58,80 @@ export function Welcome() {
       .catch((err) => alert(err.message));
   };
 
+  const theme = createTheme({
+    palette: {
+      primary: {
+        50: "#e3f2fd",
+        100: "#bbdefb",
+        200: "#81d4fa",
+        300: "#4fc3f7",
+        400: "#29b6f6",
+        500: "#2196f3",
+      },
+    },
+  });
+
   return (
-    <div className="home">
-      <h1>My List</h1>
-      <div className="login-register-container">
-        {isRegistering ? (
-          <>
-            <input
-              type="email"
-              placeholder="Email"
-              value={registerInformation.email}
-              onChange={(e) => setRegisterInformation({ ...registerInformation, email: e.target.value })}
-            />
-            <input
-              type="email"
-              placeholder="Confirm Email"
-              value={registerInformation.confirmEmail}
-              onChange={(e) => setRegisterInformation({ ...registerInformation, confirmEmail: e.target.value })}
-            />
-            <input
-              type="password"
-              placeholder="Password"
-              value={registerInformation.password}
-              onChange={(e) => setRegisterInformation({ ...registerInformation, password: e.target.value })}
-            />
-            <input
-              type="password"
-              placeholder="Confirm Password"
-              value={registerInformation.confirmPassword}
-              onChange={(e) => setRegisterInformation({ ...registerInformation, confirmPassword: e.target.value })}
-            />
-            <button onClick={handleRegister}>Register</button>
-            <button onClick={() => setIsRegistering(false)}>Go Back</button>
-          </>
-        ) : (
-          <>
-            <input type="email" onChange={handleEmailChange} value={email} />
-            <input type="password" onChange={handlePasswordChange} value={password} />
-            <button onClick={handleSignIn}>Sign In</button>
-            <button onClick={() => setIsRegistering(true)}>Create new account</button>
-          </>
-        )}
-      </div>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Container>
+        <div className="welcome-container">
+          <h1>My To-Do List Project</h1>
+          <div className="login-register-container">
+            {isRegistering ? (
+              <>
+                <input
+                  type="email"
+                  placeholder="Email"
+                  value={registerInformation.email}
+                  onChange={(e) => setRegisterInformation({ ...registerInformation, email: e.target.value })}
+                />
+                <input
+                  type="email"
+                  placeholder="Confirm Email"
+                  value={registerInformation.confirmEmail}
+                  onChange={(e) => setRegisterInformation({ ...registerInformation, confirmEmail: e.target.value })}
+                />
+                <input
+                  type="password"
+                  placeholder="Password"
+                  value={registerInformation.password}
+                  onChange={(e) => setRegisterInformation({ ...registerInformation, password: e.target.value })}
+                />
+                <input
+                  type="password"
+                  placeholder="Confirm Password"
+                  value={registerInformation.confirmPassword}
+                  onChange={(e) => setRegisterInformation({ ...registerInformation, confirmPassword: e.target.value })}
+                />
+                <Button sx={{ my: 2 }} variant="contained" onClick={handleRegister}>
+                  Register
+                </Button>
+                <Button sx={{ my: 2 }} variant="contained" onClick={() => setIsRegistering(false)}>
+                  Go Back
+                </Button>
+              </>
+            ) : (
+              <>
+                <label>Username</label>
+                <input type="email" onChange={handleEmailChange} value={email} />
+                <label>Password</label>
+                <input type="password" onChange={handlePasswordChange} value={password} />
+                <Button sx={{ my: 2 }} variant="contained" className="signIn" onClick={handleSignIn}>
+                  Sign In
+                </Button>
+                <Button
+                  sx={{ my: 2 }}
+                  variant="contained"
+                  className="createAccount"
+                  onClick={() => setIsRegistering(true)}
+                >
+                  Create new account
+                </Button>
+              </>
+            )}
+          </div>
+        </div>
+      </Container>
+    </ThemeProvider>
   );
 }

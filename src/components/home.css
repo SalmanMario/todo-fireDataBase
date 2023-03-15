@@ -1,0 +1,37 @@
+.home-container {
+  text-align: center;
+}
+
+.home-container title {
+  background-color: none;
+}
+
+.home-container h1 {
+  background-color: white;
+}
+
+.add-icon {
+  margin: auto;
+  float: left;
+  background-color: greenyellow;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.checked-icon {
+  margin: auto;
+  float: left;
+  background-color: purple;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.logout-icon {
+  float: right;
+  background-color: red;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+}
