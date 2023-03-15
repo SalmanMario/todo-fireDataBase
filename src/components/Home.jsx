@@ -94,10 +94,10 @@ export function Home() {
       {todos.map((todo, index) => (
         <div key={index} className="todo-list-items">
           <h1>{todo.todo}</h1>
-          <EditIcon variant="contained" onClick={() => handleUpdate(todo)}>
+          <EditIcon className="icons" variant="contained" onClick={() => handleUpdate(todo)}>
             update
           </EditIcon>
-          <DeleteIcon variant="contained" onClick={() => handleDelete(todo.uidd)}>
+          <DeleteIcon className="icons" variant="contained" onClick={() => handleDelete(todo.uidd)}>
             delete
           </DeleteIcon>
         </div>

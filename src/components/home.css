@@ -10,6 +10,11 @@
   background-color: white;
 }
 
+.icons {
+  padding: 5px;
+  cursor: pointer;
+}
+
 .add-icon {
   margin: auto;
   float: left;
